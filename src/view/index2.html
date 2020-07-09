@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MargaretAPP</title>
+<!-- Link a hojas de estilos -->
+<link rel="stylesheet"  href="../style/estilos.css">
+<link rel="stylesheet"  href="../bootstrap-4.5.0-dist/css/bootstrap.min.css">
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- Insetar esta linea antes de los scrips imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<!-- Bootstrap Optional JavaScript -->
+
+<script type="text/javascript" src="../bootstrap-4.5.0-dist/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../bootstrap-4.5.0-dist/js/popper.min.js"></script>
+<script type="text/javascript" src="../bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+
+<!-- Insetar esta linea despues de los  imports -->
+<script>if (window.module) module = window.module;</script>
+
+</head>
+<body>
+    <header > 
+        <img id="logo" src="../img/icon2.png" width="100px" height="100px"/>
+        <h1>Margaret Helios</h1>
+          <p>Asistente virtual</p>
+        <nav>
+            <ul>
+                <li><a href="helios.html">Helios</a></li>
+                <li><a href="">Jardin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<article>
+<div id="wrapper">
+  <div id="menu">
+        <div style="clear:both"></div>
+    </div>
+     
+    <div id="chatbox"></div>
+     
+    <form name="message" action="" class="form-inline">
+        <div class="">
+        <input class="form-control" name="usermsg" type="text" placeholder="Escribe algo..." id="usermsg" size="63"  />
+        <input class=""  name="submitmsg" type="submit"  id="submitmsg" value="Send" />
+        </div>
+    </form>
+</div>
+
+</article>
+<aside>
+    <img id="video" src="../img/gif_margaret.gif" width="450px" height="450px" />
+</aside>
+
+
+
+</body>
+
+<!-- Script del funcionamiento de pagina y comunacion con python -->
+<script type="text/javascript" src="../callPython.js"></script>
+
+
+</html>

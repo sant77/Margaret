@@ -9,12 +9,12 @@ if prueba == 'off':
     "F",
     qos=0,
     retain=False,
-    hostname="54.227.205.125",
-    port=10515,
+    hostname="",
+    port=,
     client_id="",
     keepalive=60,
     will=None,
-    auth={'username':"placa1", 'password':"12345678"}, tls=None,)
+    auth={'username':"", 'password':""}, tls=None,)
     print('enviado off')
     
 else:
@@ -22,11 +22,11 @@ else:
     "N",
     qos=0,
     retain=False,
-    hostname="54.227.205.125",
-    port=10515,
+    hostname="",
+    port=,
     client_id="",
     keepalive=60,
     will=None,
-    auth={'username':"placa1", 'password':"12345678"}, tls=None,)
+    auth={'username':"", 'password':""}, tls=None,)
     print('enviado on')
 		

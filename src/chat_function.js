@@ -1,3 +1,22 @@
+//configuracion Toastr
+optionsToastr = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": true,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  };
+
 //Clase que permite usar socket en modo cliente
  const io = require('socket.io-client');
 //conexion al cliente
@@ -6,8 +25,13 @@ const socket = io('http://localhost:5000/');
 //Verificacion en la consola de conexion al servidor
 socket.on('connect', () => {
     console.log('Cliente conectado:');
-    console.log(socket.connected); // true
   });
+
+if (socket.connected == true){
+    toastr.success('¡Conectado con Margaret!','Estado:',optionsToastr);
+} else{
+    toastr.error('¡No se pudo conectar con Margaret!','Estado:',optionsToastr);
+};
 
 //Funcion del chat
 (function () {

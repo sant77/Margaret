@@ -32,8 +32,8 @@ client.onConnectionLost = onConnectionLost;
 
 client.connect({
   useSSL: true,
-  userName: "placa1",
-  password: "12345678",
+  userName: "",
+  password: "",
   onSuccess: onConnect,
   onFailure: onFailure
 });

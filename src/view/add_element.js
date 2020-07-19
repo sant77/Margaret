@@ -1,3 +1,8 @@
+//Todas las llaves del localstorage tendran la siguiente estrucutra:
+//"elemento" + "origen" ej:
+//lampara mqtt
+//El elemento permite buscar cuando se necesite
+//El origen permite de donde provienen ese dato
 //Comunicacion con el main
 const {ipcRenderer} =  require('electron');
 //Renderizar los datos guardados del localstorage

@@ -2,17 +2,20 @@
   box-sizing: border-box;
 }
 
+@font-face{
+  font-family: Spartan;
+  src: url(Spartan-VariableFont_wght.TTF);
+}
+
 header{
   background: #edeff2;
   color: rgb(39, 37, 37);
 
 }
 
-
-
 body {
   background-color: #edeff2;
-  font-family: "Calibri", "Roboto", sans-serif;
+  font-family: "Spartan", "Roboto", sans-serif;
 }
 
 .chat_window {

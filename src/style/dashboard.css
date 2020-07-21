@@ -1,0 +1,53 @@
+:root {
+    --primary: #5C2394;
+    --light: #ffffff;
+    --grey: #efefef;
+}
+
+@font-face{
+    font-family: Spartan;
+    src: url(Spartan-VariableFont_wght.TTF);
+}
+
+
+body {
+    overflow: hidden;
+    font-family: 'Spartan', sans-serif;
+    font-weight: 300;
+    color: var(--primary);
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+.bg-primary { background-color: var(--primary) !important; }
+
+.bg-light { background-color: var(--light) !important; }
+
+.bg-grey { background-color: var(--grey) !important; }
+
+#sidebar-container {
+    min-height: 100vh;
+}
+  
+#sidebar-container .logo{
+    padding: 0.875rem 1.25rem;
+}
+  
+#sidebar-container .menu {
+    width: 18rem;
+}
+
+.btn-search{
+	right: 5px;
+}
+
+#content{
+    overflow-y: auto;
+    padding-bottom: 5rem;
+}
+
+#content{
+    margin-top: 30px;
+}

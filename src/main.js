@@ -7,7 +7,7 @@ const path = require('path');
 //Permite buscar url de archvivos
 const url = require('url');
 //Consola de python para ejecutar codigo python 
-const {PythonShell} = require('python-shell');
+//const {PythonShell} = require('python-shell');
 
 //Permite refrescar el programa sin cerrar la ventana(solo para desarrollo)
 if(process.env.NODE_ENV !== 'production') {

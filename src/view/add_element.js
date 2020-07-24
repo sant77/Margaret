@@ -27,18 +27,23 @@ optionsToastr = {
   "hideMethod": "fadeOut"
 };
 
+//Datos del servidor mqtt
+const serverData = JSON.parse(localStorage.getItem('data validation'));
+
+
+
 //Cliente mqtt, configuraccion y funciones
 clientID = "clientID-" + parseInt(Math.random() * 100);
 
-var client = new Paho.MQTT.Client("m15.cloudmqtt.com", 30515,clientID);
+var client = new Paho.MQTT.Client(serverData.server,parseInt(serverData.port),clientID);
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
 //client.onMessageArrived = onMessageArrived;
 
 client.connect({
   useSSL: true,
-  userName: "",
-  password: "",
+  userName: serverData.user,
+  password: serverData.password,
   onSuccess: onConnect,
   onFailure: onFailure
 });

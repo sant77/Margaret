@@ -23,6 +23,7 @@ let win;
 let newMargaretWindow;
 
 //Arreglo que representa el menu
+/*
 const templateMenu = [
 	{
 		label: 'File',
@@ -66,7 +67,7 @@ if (process.env.NODE_ENV !== 'production') {
 	})
   }
 
-
+*/
 
 //Funcion que crea la ventana principal
 function createWindow(){
@@ -80,6 +81,8 @@ function createWindow(){
 			nodeIntegration: true
 		}
 	});
+	//Se elimina el menu solo se debe usar en la fase final
+	win.setMenu(null);
     //Carga el archivo html principal
 	win.loadURL(url.format({
 		pathname: path.join(__dirname, 'view/index.html'),
@@ -100,11 +103,12 @@ function createWindow(){
 	*/
 
 	//Menu
-
+	
+	/*
 	const mainMenu = Menu.buildFromTemplate(templateMenu);
 	//Integrando el menu
 	Menu.setApplicationMenu(mainMenu);
-
+    */
 	//Escucha el cierre de la ventana principal y cierra todas las ventanas
 
 	win.on('closed',() =>{
@@ -139,8 +143,14 @@ app.on('ready',createWindow);
 //Escuha la petecion del render process (add) 
 
 ipcMain.on('message:data',(e,data) =>{
-	console.log(data);
+	//console.log(data);
 	win.webContents.send('message:data',data);
+
+});
+//Cuando escuche el mensaje cierra la aplicacion
+ipcMain.on('message:close',(e,data) =>{
+	//console.log(data);
+	app.quit();
 
 });
 

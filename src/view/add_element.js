@@ -197,3 +197,10 @@ function renderHtml(){
         }
       }
       )};
+//Permite cerrar la aplicacion
+const close_app = document.getElementById('close');
+
+close_app.addEventListener('click',function(event){
+    ipcRenderer.send('message:close','close');
+    
+});

@@ -23,7 +23,7 @@ let win;
 let newMargaretWindow;
 
 //Arreglo que representa el menu
-/*
+
 const templateMenu = [
 	{
 		label: 'File',
@@ -67,7 +67,6 @@ if (process.env.NODE_ENV !== 'production') {
 	})
   }
 
-*/
 
 //Funcion que crea la ventana principal
 function createWindow(){
@@ -75,14 +74,14 @@ function createWindow(){
 	win = new BrowserWindow({
 		width:1300,
 		height:800,
-		icon:__dirname+'/img/icon2.png',
+		//icon:__dirname+'/img/icon2.png',
 		//Esta linea permite que los nodos sea capces de acceder a las librerias 
 		webPreferences: {
 			nodeIntegration: true
 		}
 	});
 	//Se elimina el menu solo se debe usar en la fase final
-	win.setMenu(null);
+	//win.setMenu(null);
     //Carga el archivo html principal
 	win.loadURL(url.format({
 		pathname: path.join(__dirname, 'view/index.html'),
@@ -104,11 +103,11 @@ function createWindow(){
 
 	//Menu
 	
-	/*
+	
 	const mainMenu = Menu.buildFromTemplate(templateMenu);
 	//Integrando el menu
 	Menu.setApplicationMenu(mainMenu);
-    */
+    
 	//Escucha el cierre de la ventana principal y cierra todas las ventanas
 
 	win.on('closed',() =>{
@@ -147,11 +146,16 @@ ipcMain.on('message:data',(e,data) =>{
 	win.webContents.send('message:data',data);
 
 });
+
+ipcMain.on('message:chart',(e,data) =>{
+	//console.log(data);
+	win.webContents.send('message:chart',data);
+
+});
+
 //Cuando escuche el mensaje cierra la aplicacion
 ipcMain.on('message:close',(e,data) =>{
 	//console.log(data);
 	app.quit();
 
 });
-
-	

@@ -13,7 +13,7 @@ const add_element = document.getElementById('add_component');
 //Cuando se preciona el boton de acciona la funcion que crea una nueva ventana
 add_element.addEventListener('click',function(event){
    
-    const path_1  = path.join('file://',__dirname,'addOn_Off.html');
+    const path_1  = path.join('file://',__dirname,'addChart.html');
     //frame:false  elimina la barra de la ventana,tranparent:true convierte la ventana transparente
     //alwaysontop: ture permite que simpre este encima de la ventana
     let win = new BrowserWindow({

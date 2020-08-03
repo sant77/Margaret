@@ -5,8 +5,10 @@
 //El origen permite de donde provienen ese dato
 //Comunicacion con el main
 const {ipcRenderer} =  require('electron');
+const {Client} = require('paho-mqtt')
 //Renderizar los datos guardados del localstorage
 renderHtml();
+//renderChart();
 //Opciones para los toastr
 //Parametros para los toastr
 optionsToastr = {
@@ -35,9 +37,9 @@ const serverData = JSON.parse(localStorage.getItem('data validation'));
 //Cliente mqtt, configuraccion y funciones
 clientID = "clientID-" + parseInt(Math.random() * 100);
 
-var client = new Paho.MQTT.Client(serverData.server,parseInt(serverData.port),clientID);
+let client = new Client(serverData.server,parseInt(serverData.port),clientID);
 // set callback handlers
-client.onConnectionLost = onConnectionLost;
+
 //client.onMessageArrived = onMessageArrived;
 
 client.connect({
@@ -48,6 +50,8 @@ client.connect({
   onFailure: onFailure
 });
 
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
 
   // called when the client connects
   function onConnect() {
@@ -95,7 +99,7 @@ client.connect({
      return localstorage_data;
   };
   //Pinta las etiquetas html y controla el comportamiento de estas
-  function renderMqtt(data,location){
+  function renderCard(data,location){
       //etique html que va a ser insertada en helios.html
       const newIotElement = `
       <div class="col-xs-4 p-2">
@@ -178,10 +182,15 @@ client.connect({
       });
     };
 
+ 
 //Recibe el mensaje proveniente de main con la informacion de add 
 ipcRenderer.on('message:data',(e, data) =>{
-  renderMqtt(data,'ipcRenderer');
+  renderCard(data,'ipcRenderer');
     });
+
+ipcRenderer.on('message:chart',(e, data) =>{
+  client.subscribe(data.topic);
+        });
 
     //Funcion que permite buscar los datos guardados y volver a pintarlos en pantalla
 function renderHtml(){
@@ -193,7 +202,7 @@ function renderHtml(){
         if (x.split(" ")[x.split(" ").length-1] == "mqttData"){
           //Si es asi pinta la etiqueta en pantalla
           console.log("Funciono")
-          renderMqtt(JSON.parse(localStorage.getItem(x)),'renderMqtt');
+          renderCard(JSON.parse(localStorage.getItem(x)),'renderMqtt');
         }
       }
       )};
@@ -204,3 +213,8 @@ close_app.addEventListener('click',function(event){
     ipcRenderer.send('message:close','close');
     
 });
+
+// called when a message arrives
+function onMessageArrived(message) {
+  console.log("onMessageArrived:"+message.payloadString);
+}

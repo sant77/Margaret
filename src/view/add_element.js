@@ -6,6 +6,7 @@
 //Comunicacion con el main
 const {ipcRenderer} =  require('electron');
 const {Client} = require('paho-mqtt')
+let {Message} = require('paho-mqtt')
 //Renderizar los datos guardados del localstorage
 renderHtml();
 //renderChart();
@@ -158,7 +159,7 @@ client.onMessageArrived = onMessageArrived;
           //Envia un mensaje al servidor  MQTT
           // Publish a Message
           
-          var message = new Paho.MQTT.Message(localstorage_data.payloadOn);
+          var message = new Message(localstorage_data.payloadOn);
           message.destinationName = localstorage_data.topic;
           message.qos = 0;
           client.send(message);
@@ -174,7 +175,7 @@ client.onMessageArrived = onMessageArrived;
 
           //Envia un mensaje al servidor  MQTT
           // Publish a Message
-          var message = new Paho.MQTT.Message(localstorage_data.payloadOff);
+          var message = new Message(localstorage_data.payloadOff);
           message.destinationName = localstorage_data.topic;
           message.qos = 0;
           client.send(message);
